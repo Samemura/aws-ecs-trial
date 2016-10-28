@@ -28,12 +28,12 @@ RUN apt-get install -y git && apt-get clean
 RUN echo 'alias railss="rails server -p 3000 -b 0.0.0.0"' >> ~/.bashrc
 
 # App home directory
-ENV APP_HOME /usr/src/my_app
+ENV APP_HOME /usr/src/web
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 # Bundle install
-# ADD Gemfile* $APP_HOME/
-# RUN bundle install --jobs=4
+ADD Gemfile* $APP_HOME/
+RUN bundle install --jobs=4
 
 ADD . $APP_HOME
